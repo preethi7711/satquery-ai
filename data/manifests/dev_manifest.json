@@ -1,0 +1,36 @@
+{
+    "dataset": "DEV_SUBSET",
+    "description": "Mock GeoTIFFs for testing the E2E pipeline without full datasets.",
+    "samples": [
+        {
+            "id": "vqa_1",
+            "type": "single_optical",
+            "files": [
+                "dev_optical_1.tif"
+            ]
+        },
+        {
+            "id": "sar_1",
+            "type": "single_sar",
+            "files": [
+                "dev_sar_1.tif"
+            ]
+        },
+        {
+            "id": "pair_1",
+            "type": "optical_sar",
+            "files": [
+                "pair_optical.tif",
+                "pair_sar.tif"
+            ]
+        },
+        {
+            "id": "temporal_1",
+            "type": "bi_temporal",
+            "files": [
+                "time1_optical.tif",
+                "time2_optical.tif"
+            ]
+        }
+    ]
+}
