@@ -94,3 +94,20 @@ def download_file(path: str):
          raise HTTPException(status_code=404, detail="File not found")
     return FileResponse(full_path)
 
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse, JSONResponse
+
+# Serve the frontend built files
+frontend_dist = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend", "dist")
+
+if os.path.exists(frontend_dist):
+    # Catch-all for SPA routing (React Router)
+    @app.exception_handler(404)
+    async def custom_404_handler(request, exc):
+        if request.url.path.startswith("/api/"):
+            return JSONResponse(status_code=404, content={"detail": "Not Found"})
+        if os.path.exists(os.path.join(frontend_dist, "index.html")):
+            return FileResponse(os.path.join(frontend_dist, "index.html"))
+        return JSONResponse(status_code=404, content={"detail": "Not Found"})
+
+    app.mount("/", StaticFiles(directory=frontend_dist, html=True), name="static")

@@ -20,4 +20,4 @@
 - [Architecture Decisions](DECISIONS.md)
 - [Benchmarks](BENCHMARKS.md)
 - [Failure Analysis](docs/failure_analysis.md)
-- [SIH Judge Audit](docs/sih_judge_audit.md)
+
